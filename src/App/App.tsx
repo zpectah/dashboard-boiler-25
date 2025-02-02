@@ -1,4 +1,5 @@
 import { Suspense, useEffect } from 'react';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { AppPreloader } from '../components';
 import { useLocales, useTheme } from '../hooks';
 import AppProvider from './AppProvider';
@@ -7,6 +8,8 @@ import AppRouter from './AppRouter';
 import 'dayjs/locale/en';
 import 'dayjs/locale/cs';
 import '../i18n';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   const { init: initLocales, locale } = useLocales();
@@ -20,9 +23,11 @@ const App = () => {
 
   return (
     <Suspense fallback={<AppPreloader />}>
-      <AppProvider locale={locale}>
-        <AppRouter />
-      </AppProvider>
+      <QueryClientProvider client={queryClient}>
+        <AppProvider locale={locale}>
+          <AppRouter />
+        </AppProvider>
+      </QueryClientProvider>
     </Suspense>
   );
 };
