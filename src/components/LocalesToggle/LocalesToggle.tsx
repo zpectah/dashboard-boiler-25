@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import config from '../../config';
 import { useLocales } from '../../hooks';
 
 const LocalesToggle = () => {
@@ -12,8 +13,11 @@ const LocalesToggle = () => {
 
   return (
     <>
-      <button onClick={() => setLocaleHandler('en')}>en {locale === 'en' && '*'}</button>
-      <button onClick={() => setLocaleHandler('cs')}>cs {locale === 'cs' && '*'}</button>
+      {config.app.locales.available.map((loc) => (
+        <button key={loc} onClick={() => setLocaleHandler(loc)}>
+          {loc} {locale === loc && '*'}
+        </button>
+      ))}
     </>
   );
 };

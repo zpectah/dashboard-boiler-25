@@ -1,19 +1,13 @@
 import { Outlet } from 'react-router-dom';
-import { ThemeToggle } from '../ThemeToggle';
-import { LocalesToggle } from '../LocalesToggle';
+import { Header } from '../Header';
+import { Footer } from '../Footer';
 
 const AppLayout = () => {
   return (
     <div id="app-layout">
-      <header>
-        header
-        <ThemeToggle />
-        <LocalesToggle />
-      </header>
-      <main>
-        <Outlet />
-      </main>
-      <footer>footer</footer>
+      <Header />
+      <Outlet />
+      <Footer />
     </div>
   );
 };

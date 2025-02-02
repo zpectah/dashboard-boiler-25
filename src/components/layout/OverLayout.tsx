@@ -6,7 +6,7 @@ interface OverLayoutProps extends WithChildren {
 
 const OverLayout = ({ children, variant = 'default' }: OverLayoutProps) => {
   return (
-    <div id="over-layout" className={`variant-${variant}`}>
+    <div id="over-layout" className={`variant--${variant}`}>
       {children}
     </div>
   );
