@@ -1,0 +1,10 @@
+{
+  "message": {
+    "error": {
+      "required": "Pole je povinné",
+      "format": "Špatný formát pole",
+      "email_format": "Email je ve špatném formátu",
+      "password_mismatch": "Hesla se neshodují"
+    }
+  }
+}

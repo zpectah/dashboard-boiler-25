@@ -1,0 +1,10 @@
+{
+  "message": {
+    "error": {
+      "required": "Field is required",
+      "format": "Invalid field format",
+      "email_format": "Invalid email address format",
+      "password_mismatch": "Passwords do not match"
+    }
+  }
+}
