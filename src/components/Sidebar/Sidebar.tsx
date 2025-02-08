@@ -1,6 +1,9 @@
-import { styled, Drawer, Box } from '@mui/material';
+import { styled, Drawer, Box, Paper, Stack } from '@mui/material';
 import { useSidebar } from '../../hooks';
 import { HEADER_HEIGHT } from '../../constants';
+import { SidebarToggle } from '../SidebarToggle';
+import { AppLogo } from '../AppLogo';
+import { Navbar } from '../Navbar';
 
 const SidebarWrapper = styled(Box)({
   width: '250px',
@@ -11,13 +14,16 @@ const SidebarWrapper = styled(Box)({
   flexDirection: 'column',
 });
 
-const SidebarHeader = styled('div')({
+const SidebarHeader = styled(Paper)(({ theme }) => ({
   width: '100%',
   height: HEADER_HEIGHT,
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'flex-start',
-});
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  paddingLeft: theme.spacing(3),
+  paddingRight: theme.spacing(3),
+}));
 
 const SidebarContent = styled('div')({
   width: 'calc(100% + 30px)',
@@ -43,8 +49,13 @@ const SidebarAddon = styled('div')({});
 const Sidebar = () => {
   const { open } = useSidebar();
 
-  const header = <>...header...</>;
-  const content = <>...content...</>;
+  const header = (
+    <Stack direction="row" alignItems="center" gap={2}>
+      <SidebarToggle />
+      <AppLogo />
+    </Stack>
+  );
+  const content = <Navbar />;
   const addon = <>...addon...</>;
 
   return (

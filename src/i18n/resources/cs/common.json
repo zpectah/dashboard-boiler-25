@@ -1,6 +1,24 @@
 {
   "button": {
     "open": "Otevřít",
-    "close": "Zavřít"
+    "close": "Zavřít",
+    "menu": "Menu",
+    "theme": "Téma",
+    "locale": "Jazyk"
+  },
+  "theme": {
+    "light": "Světlé",
+    "dark": "Tmavé",
+    "system": "Podle OS"
+  },
+  "routes": {
+    "dashboard": "Dashboard",
+    "articles": "Články",
+    "payments": "Platby",
+    "users": "Uživatelé",
+    "welcome": "Vítejte",
+    "login": "Přihlášení",
+    "passwordRecovery": "Obnova hesla",
+    "registration": "Registrace"
   }
 }

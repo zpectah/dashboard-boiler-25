@@ -1,11 +1,12 @@
-import { styled, Container } from '@mui/material';
+import { styled, Container, Paper, Stack, StackProps } from '@mui/material';
 import { useSidebar } from '../../hooks';
 import { HEADER_HEIGHT, SIDEBAR_WIDTH } from '../../constants';
 import { ThemeToggle } from '../ThemeToggle';
 import { LocalesToggle } from '../LocalesToggle';
 import { SidebarToggle } from '../SidebarToggle';
+import { AppLogo } from '../AppLogo';
 
-const HeaderWrapper = styled('header', {
+const HeaderWrapper = styled(Paper, {
   shouldForwardProp: (propName) => propName !== 'isSidebarOpen',
 })<{ readonly isSidebarOpen: boolean }>(({ theme, isSidebarOpen }) => ({
   width: isSidebarOpen ? `calc(100% - ${SIDEBAR_WIDTH})` : '100%',
@@ -20,22 +21,42 @@ const HeaderWrapper = styled('header', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  borderBottom: `1px solid ${theme.palette.divider}`,
 }));
-
-const InnerWrapper = styled('div')({});
 
 const Header = () => {
   const { open } = useSidebar();
 
+  const stackBlocCommonProps: Partial<StackProps> = {
+    direction: 'row',
+    alignItems: 'center',
+    gap: 2,
+  };
+
+  const primary = !open ? (
+    <>
+      <SidebarToggle />
+      <AppLogo />
+    </>
+  ) : (
+    <></>
+  );
+  const secondary = (
+    <>
+      <ThemeToggle />
+      <LocalesToggle />
+    </>
+  );
+  const tertiary = <></>;
+
   return (
-    <HeaderWrapper isSidebarOpen={open}>
+    <HeaderWrapper as="header" isSidebarOpen={open}>
       <Container maxWidth={false}>
-        <InnerWrapper>
-          header
-          <ThemeToggle />
-          <LocalesToggle />
-          <SidebarToggle />
-        </InnerWrapper>
+        <Stack direction="row" gap={3} justifyContent="space-between">
+          <Stack {...stackBlocCommonProps}>{primary}</Stack>
+          <Stack {...stackBlocCommonProps}>{tertiary}</Stack>
+          <Stack {...stackBlocCommonProps}>{secondary}</Stack>
+        </Stack>
       </Container>
     </HeaderWrapper>
   );

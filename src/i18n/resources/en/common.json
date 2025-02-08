@@ -1,6 +1,24 @@
 {
   "button": {
     "open": "Open",
-    "close": "Close"
+    "close": "Close",
+    "menu": "Menu",
+    "theme": "Theme",
+    "locale": "Locale"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "routes": {
+    "dashboard": "Dashboard",
+    "articles": "Articles",
+    "payments": "Payments",
+    "users": "Users",
+    "welcome": "Welcome",
+    "login": "Login",
+    "passwordRecovery": "Password recovery",
+    "registration": "Registration"
   }
 }
