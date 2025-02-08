@@ -1,4 +1,4 @@
-import { OverLayout } from '../../components';
+import { PageLayout } from '../../components';
 import { useDocumentMeta } from '../../helpers';
 
 interface ErrorProps {
@@ -8,7 +8,7 @@ interface ErrorProps {
 const Error = ({ code }: ErrorProps) => {
   useDocumentMeta({ title: 'Error' });
 
-  return <OverLayout>...Error: {code}...</OverLayout>;
+  return <PageLayout variant="centered">...Error: {code}...</PageLayout>;
 };
 
 export default Error;

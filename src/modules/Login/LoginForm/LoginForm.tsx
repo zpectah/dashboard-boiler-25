@@ -1,4 +1,6 @@
-import { Button } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Button, Stack } from '@mui/material';
+import config from '../../../config';
 import { Form, FormField, TextField } from '../../../components';
 import { useLoginForm } from './useLoginForm';
 import { ILoginForm } from './schema';
@@ -16,11 +18,14 @@ const LoginForm = () => {
         isRequired
       />
 
-      <div>
+      <Stack direction="row" gap={2}>
         <Button type="submit" variant="contained">
           Submit
         </Button>
-      </div>
+        <Button component={Link} to={config.routes.routes.password_recovery.path}>
+          Lost password
+        </Button>
+      </Stack>
     </Form>
   );
 };
