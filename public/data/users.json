@@ -6,6 +6,7 @@
     "created": "",
     "updated": "",
     "active": true,
+    "deleted": false,
     "name": "Test",
     "surname": "User 1"
   },
@@ -16,6 +17,7 @@
     "created": "",
     "updated": "",
     "active": true,
+    "deleted": false,
     "name": "Test",
     "surname": "User 2"
   },
@@ -26,6 +28,7 @@
     "created": "",
     "updated": "",
     "active": true,
+    "deleted": false,
     "name": "Test",
     "surname": "User 3"
   }

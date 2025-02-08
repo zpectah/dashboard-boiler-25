@@ -4,20 +4,23 @@
     "name": "article-1",
     "created": "",
     "updated": "",
-    "active": true
+    "active": true,
+    "deleted": false
   },
   {
     "id": 2,
     "name": "article-2",
     "created": "",
     "updated": "",
-    "active": true
+    "active": true,
+    "deleted": false
   },
   {
     "id": 3,
     "name": "article-3",
     "created": "",
     "updated": "",
-    "active": true
+    "active": true,
+    "deleted": false
   }
 ]

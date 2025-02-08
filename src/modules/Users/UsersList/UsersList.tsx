@@ -1,14 +1,23 @@
 import { Link } from 'react-router-dom';
 import config from '../../../config';
+import { useUsersQuery } from '../../../hooks';
 
 const UsersList = () => {
+  const usersQuery = useUsersQuery();
+
   return (
     <>
       ...UsersList...
       <br />
-      <Link to={`${config.routes.routes.users.path}/1`}>Detail 1</Link>
-      <Link to={`${config.routes.routes.users.path}/2`}>Detail 2</Link>
-      <Link to={`${config.routes.routes.users.path}/3`}>Detail 3</Link>
+      {usersQuery.data && (
+        <div>
+          {usersQuery.data.map((item) => (
+            <div key={item.id}>
+              {item.email} |<Link to={`${config.routes.routes.users.path}/${item.id}`}>Detail</Link>
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };

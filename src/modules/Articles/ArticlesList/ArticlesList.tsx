@@ -9,16 +9,15 @@ const ArticlesList = () => {
     <>
       ...ArticlesList...
       <br />
-      <Link to={`${config.routes.routes.articles.path}/1`}>Detail 1</Link>
-      <Link to={`${config.routes.routes.articles.path}/2`}>Detail 2</Link>
-      <Link to={`${config.routes.routes.articles.path}/3`}>Detail 3</Link>
       <br />
       {articlesQuery.data && (
-        <>
+        <div>
           {articlesQuery.data.map((item) => (
-            <div key={item.id}>{item.name}</div>
+            <div key={item.id}>
+              {item.name} |<Link to={`${config.routes.routes.articles.path}/${item.id}`}>Detail</Link>
+            </div>
           ))}
-        </>
+        </div>
       )}
     </>
   );

@@ -1,8 +1,11 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { ArticlesItem, ArticlesItems } from '../../types';
+
+const QUERY_KEY = 'articles';
 
 export const useArticlesQuery = () => {
-  const query = useQuery({
-    queryKey: ['articles'],
+  const query = useQuery<ArticlesItems>({
+    queryKey: [QUERY_KEY, `${QUERY_KEY}-list`],
     queryFn: () => fetch('/data/articles.json').then((response) => response.json()),
   });
 
@@ -12,8 +15,8 @@ export const useArticlesQuery = () => {
 };
 
 export const useArticlesDetailQuery = (id: string) => {
-  const query = useQuery({
-    queryKey: ['articles'],
+  const query = useQuery<ArticlesItems>({
+    queryKey: [QUERY_KEY, `${QUERY_KEY}-detail`, `${QUERY_KEY}-detail-${id}`],
     queryFn: () => fetch('/data/articles.json').then((response) => response.json()),
     enabled: !!id,
   });
@@ -26,18 +29,19 @@ export const useArticlesDetailQuery = (id: string) => {
 export const useArticlesMutation = () => {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
-    mutationFn: (article: any) => {
-      return fetch('/data/articles.json', {
+  const mutation = useMutation<ArticlesItem>({
+    mutationFn: async (article) => {
+      const response = await fetch('/data/articles.json', {
         method: 'POST',
         body: JSON.stringify(article),
         headers: {
           'Content-type': 'application/json; charset=UTF-8',
         },
-      }).then((response) => response.json());
+      });
+      return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['articles'] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEY, `${QUERY_KEY}-mutation`] });
     },
   });
 
