@@ -2,6 +2,7 @@ import { Suspense, useEffect } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { AppPreloader } from '../components';
 import { useLocales, useTheme } from '../hooks';
+
 import AppProvider from './AppProvider';
 import AppRouter from './AppRouter';
 

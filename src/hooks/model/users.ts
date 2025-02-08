@@ -1,11 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { UsersItem, UsersItems } from '../../types';
-
-const QUERY_KEY = 'users';
+import { USERS_API_KEY } from '../../constants';
 
 export const useUsersQuery = () => {
   const query = useQuery<UsersItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-list`],
+    queryKey: [USERS_API_KEY, `${USERS_API_KEY}-list`],
     queryFn: () => fetch('/data/users.json').then((response) => response.json()),
   });
 
@@ -16,7 +15,7 @@ export const useUsersQuery = () => {
 
 export const useUsersDetailQuery = (id: string) => {
   const query = useQuery<UsersItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-detail`, `${QUERY_KEY}-detail-${id}`],
+    queryKey: [USERS_API_KEY, `${USERS_API_KEY}-detail`, `${USERS_API_KEY}-detail-${id}`],
     queryFn: () => fetch('/data/users.json').then((response) => response.json()),
     enabled: !!id,
   });
@@ -41,7 +40,7 @@ export const useUsersMutation = () => {
       return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY, `${QUERY_KEY}-mutation`] });
+      queryClient.invalidateQueries({ queryKey: [USERS_API_KEY, `${USERS_API_KEY}-mutation`] });
     },
   });
 

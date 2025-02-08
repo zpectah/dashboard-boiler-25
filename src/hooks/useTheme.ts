@@ -2,6 +2,7 @@ import { useColorScheme } from '@mui/material/styles';
 import { useThemeStore } from '../store';
 import { ThemeMode } from '../types';
 import { themeModeKeys } from '../enums';
+import { THEME_STORAGE_KEY } from '../constants';
 
 export const useTheme = () => {
   const { mode, setMode } = useColorScheme();
@@ -32,7 +33,7 @@ export const useTheme = () => {
   };
 
   const initHandler = () => {
-    const current = window.localStorage.getItem('APP_THEME_MODE') ?? 'light';
+    const current = window.localStorage.getItem(THEME_STORAGE_KEY) ?? 'light';
 
     setModeHandler(current as ThemeMode);
   };

@@ -1,11 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { ArticlesItem, ArticlesItems } from '../../types';
-
-const QUERY_KEY = 'articles';
+import { ARTICLES_API_KEY } from '../../constants';
 
 export const useArticlesQuery = () => {
   const query = useQuery<ArticlesItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-list`],
+    queryKey: [ARTICLES_API_KEY, `${ARTICLES_API_KEY}-list`],
     queryFn: () => fetch('/data/articles.json').then((response) => response.json()),
   });
 
@@ -16,7 +15,7 @@ export const useArticlesQuery = () => {
 
 export const useArticlesDetailQuery = (id: string) => {
   const query = useQuery<ArticlesItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-detail`, `${QUERY_KEY}-detail-${id}`],
+    queryKey: [ARTICLES_API_KEY, `${ARTICLES_API_KEY}-detail`, `${ARTICLES_API_KEY}-detail-${id}`],
     queryFn: () => fetch('/data/articles.json').then((response) => response.json()),
     enabled: !!id,
   });
@@ -41,7 +40,7 @@ export const useArticlesMutation = () => {
       return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY, `${QUERY_KEY}-mutation`] });
+      queryClient.invalidateQueries({ queryKey: [ARTICLES_API_KEY, `${ARTICLES_API_KEY}-mutation`] });
     },
   });
 

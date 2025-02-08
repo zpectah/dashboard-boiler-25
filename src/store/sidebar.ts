@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { SIDEBAR_STORAGE_KEY } from '../constants';
 
 interface SidebarStore {
   open: boolean;
@@ -6,11 +7,11 @@ interface SidebarStore {
 }
 
 const useSidebarStore = create<SidebarStore>((set) => {
-  const current = window.localStorage.getItem('APP_SIDEBAR') === 'true';
+  const current = window.localStorage.getItem(SIDEBAR_STORAGE_KEY) === 'true';
 
   const setSidebarHandler = (open: boolean) => {
     set({ open });
-    window.localStorage.setItem('APP_SIDEBAR', String(open));
+    window.localStorage.setItem(SIDEBAR_STORAGE_KEY, String(open));
   };
 
   return {

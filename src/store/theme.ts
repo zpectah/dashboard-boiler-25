@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { ThemeMode } from '../types';
+import { THEME_STORAGE_KEY } from '../constants';
 
 interface ThemeStore {
   mode: ThemeMode;
@@ -7,11 +8,11 @@ interface ThemeStore {
 }
 
 const useThemeStore = create<ThemeStore>((set) => {
-  const current = window.localStorage.getItem('APP_THEME_MODE') ?? 'light';
+  const current = window.localStorage.getItem(THEME_STORAGE_KEY) ?? 'light';
 
   const setModeHandler = (mode: ThemeMode) => {
     set({ mode });
-    window.localStorage.setItem('APP_THEME_MODE', mode);
+    window.localStorage.setItem(THEME_STORAGE_KEY, mode);
   };
 
   return {

@@ -1,0 +1,3 @@
+export const LOCALES_STORAGE_KEY = 'APP_LOCALES';
+export const SIDEBAR_STORAGE_KEY = 'APP_SIDEBAR';
+export const THEME_STORAGE_KEY = 'APP_THEME_MODE';

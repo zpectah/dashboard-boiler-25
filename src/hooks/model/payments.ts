@@ -1,11 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { PaymentsItem, PaymentsItems } from '../../types';
-
-const QUERY_KEY = 'payments';
+import { PAYMENTS_API_KEY } from '../../constants';
 
 export const usePaymentsQuery = () => {
   const query = useQuery<PaymentsItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-list`],
+    queryKey: [PAYMENTS_API_KEY, `${PAYMENTS_API_KEY}-list`],
     queryFn: () => fetch('/data/payments.json').then((response) => response.json()),
   });
 
@@ -16,7 +15,7 @@ export const usePaymentsQuery = () => {
 
 export const usePaymentsDetailQuery = (id: string) => {
   const query = useQuery<PaymentsItems>({
-    queryKey: [QUERY_KEY, `${QUERY_KEY}-detail`, `${QUERY_KEY}-detail-${id}`],
+    queryKey: [PAYMENTS_API_KEY, `${PAYMENTS_API_KEY}-detail`, `${PAYMENTS_API_KEY}-detail-${id}`],
     queryFn: () => fetch('/data/payments.json').then((response) => response.json()),
     enabled: !!id,
   });
@@ -41,7 +40,7 @@ export const usePaymentsMutation = () => {
       return await response.json();
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QUERY_KEY, `${QUERY_KEY}-mutation`] });
+      queryClient.invalidateQueries({ queryKey: [PAYMENTS_API_KEY, `${PAYMENTS_API_KEY}-mutation`] });
     },
   });
 
