@@ -42,6 +42,12 @@ const AppRouter = () => {
     {
       path: routes.password_recovery.path,
       element: <PasswordRecovery />,
+      children: [
+        {
+          path: `${routes.password_recovery.path}/:token`,
+          element: <PasswordRecovery />,
+        },
+      ],
     },
 
     // Routes with authorization
