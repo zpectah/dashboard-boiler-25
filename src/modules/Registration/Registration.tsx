@@ -1,4 +1,5 @@
-import { PageLayout } from '../../components';
+import { CardContent } from '@mui/material';
+import { Card, PageLayout } from '../../components';
 import { useDocumentMeta } from '../../helpers';
 import { RegistrationForm } from './RegistrationForm';
 
@@ -7,8 +8,11 @@ const Registration = () => {
 
   return (
     <PageLayout variant="centered">
-      <div>...Registration...</div>
-      <RegistrationForm />
+      <Card title="Registration">
+        <CardContent>
+          <RegistrationForm />
+        </CardContent>
+      </Card>
     </PageLayout>
   );
 };

@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
-import { PageLayout } from '../../components';
+import { CardContent } from '@mui/material';
+import { Card, PageLayout } from '../../components';
 import { useDocumentMeta } from '../../helpers';
 import { PasswordRecoveryForm } from './PasswordRecoveryForm';
 import { NewPasswordForm } from './NewPasswordForm';
@@ -11,8 +12,9 @@ const PasswordRecovery = () => {
 
   return (
     <PageLayout variant="centered">
-      <div>...PasswordRecoveryForm...token:{token}</div>
-      {token ? <NewPasswordForm token={token} /> : <PasswordRecoveryForm />}
+      <Card title="Lost password">
+        <CardContent>{token ? <NewPasswordForm token={token} /> : <PasswordRecoveryForm />}</CardContent>
+      </Card>
     </PageLayout>
   );
 };

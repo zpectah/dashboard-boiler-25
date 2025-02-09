@@ -1,4 +1,5 @@
 export * from './AppLogo';
+export * from './Card';
 export * from './Footer';
 export * from './form';
 export * from './Header';

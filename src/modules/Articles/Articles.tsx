@@ -11,23 +11,16 @@ const Articles = () => {
   // TODO: Articles context? - why would i need it?
 
   return (
-    <ViewLayout meta={{ title: 'Articles' }} side={<>Some aside block...init:{init ? 'true' : 'false'}</>}>
+    <ViewLayout
+      meta={{ title: 'Articles' }}
+      side={
+        <>
+          Some aside block...init:{init ? 'true' : 'false'}...token:{token}
+        </>
+      }
+    >
       <ArticlesDetail id={id} />
       <ArticlesList />
-      <br />
-      <br />
-      <br />
-      sdfhdfghdfg dfg hdfghdfghdfghdfg ___ {token}
-      <br />
-      <br />
-      sdfgsdfgj sdlkf gjlskdjfg lksdj fglkjsdflkgjslj
-      <br />
-      <br />
-      <br />
-      sdfhdfghdfg dfg hdfghdfghdfghdfg
-      <br />
-      <br />
-      sdfgsdfgj sdlkf gjlskdjfg lksdj fglkjsdflkgjslj
     </ViewLayout>
   );
 };

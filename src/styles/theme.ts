@@ -63,6 +63,11 @@ const theme = createTheme({
         },
       }),
     },
+    MuiCard: {
+      defaultProps: {
+        variant: 'outlined',
+      },
+    },
   },
 });
 

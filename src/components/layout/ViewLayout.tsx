@@ -28,13 +28,24 @@ const InnerWrapper = styled('div')({
   flexDirection: 'row',
 });
 
-const ContentWrapper = styled('div')({
+const ContentWrapper = styled('div')(({ theme }) => ({
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
   flex: 1,
-});
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(2),
+}));
 
-const ContentSidebarWrapper = styled('aside')({
+const ContentSidebarWrapper = styled('aside')(({ theme }) => ({
   width: CONTENT_SIDEBAR_WIDTH,
-});
+  marginLeft: theme.spacing(2),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(2),
+}));
 
 interface ViewLayoutProps extends WithChildren {
   variant?: 'default';

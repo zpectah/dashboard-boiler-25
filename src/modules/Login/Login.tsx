@@ -1,4 +1,5 @@
-import { PageLayout } from '../../components';
+import { CardContent } from '@mui/material';
+import { Card, PageLayout } from '../../components';
 import { useDocumentMeta } from '../../helpers';
 import { LoginForm } from './LoginForm';
 
@@ -7,8 +8,11 @@ const Login = () => {
 
   return (
     <PageLayout variant="centered">
-      <div>...Login...</div>
-      <LoginForm />
+      <Card title="Login">
+        <CardContent>
+          <LoginForm />
+        </CardContent>
+      </Card>
     </PageLayout>
   );
 };
